@@ -1,0 +1,44 @@
+.table-element {
+  box-sizing: border-box;
+  border: 2px solid white;
+  width: 5.555%;
+  justify-content: center;
+  align-items: center;
+}
+
+.element {
+  background-color: green;
+  color: white;
+}
+
+.element-undefined {
+  background-color: white;
+  color: white;
+}
+
+.element-number {
+  display: block;
+  text-align: center;
+  font-size: 10px;
+}
+.element-symbol {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+.element-name {
+  display: block;
+  text-align: center;
+  font-size: 8px;
+}
+.element-atomic-mass {
+  display: block;
+  text-align: center;
+  font-size: 8px;
+}
+.element-shells {
+  display: block;
+  text-align: center;
+  font-size: 6px;
+}

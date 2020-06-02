@@ -1,0 +1,13 @@
+.PeriodicTable-outer-wrapper {
+  border: 2px solid black;
+}
+.PeriodicTable-inner-wrapper {
+  border: 8px solid orange;
+}
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  margin: 20px 100px 0 100px;
+}

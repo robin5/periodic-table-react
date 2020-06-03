@@ -16,41 +16,76 @@ class Element extends React.Component {
     return arr.join();
   };
 
-  CategoryClass = (category) => {
-    switch (category) {
-      case "diatomic nonmetal":
-        return "element-diatomic-nonmetal";
-      case "polyatomic nonmetal":
-        return "element-polyatomic-nonmetal";
-        case "metalloid":
-          return "element-metalloid";
-      case "noble gas":
-        return "element-noble-gas";
-      case "alkali metal":
-        return "element-alkali-metal";
-      case "alkaline earth metal":
-        return "element-alkaline-earth-metal";
-      case "transition metal":
-        return "element-transition-metal";
-      case "post-transition metal":
-        return "element-post-transition-metal";
-      case "lanthanide":
-        return "element-lanthanide";
-      case "actinide":
-        return "element-actinide";
-      default:
-        return "element-unknown";
+  CategoryClass = (element) => {
+
+    if (element === "") {
+      return "element-undefined";
     }
+
+    let className = "element-inner-wrapper ";
+    switch (element.category) {
+      case "diatomic nonmetal":
+        className += "element-diatomic-nonmetal";
+        break;
+
+      case "polyatomic nonmetal":
+        className += "element-polyatomic-nonmetal";
+        break;
+
+      case "metalloid":
+        className += "element-metalloid";
+        break;
+
+      case "noble gas":
+        className += "element-noble-gas";
+        break;
+
+      case "alkali metal":
+        className += "element-alkali-metal";
+        break;
+
+      case "alkaline earth metal":
+        className += "element-alkaline-earth-metal";
+        break;
+
+      case "transition metal":
+        className += "element-transition-metal";
+        break;
+
+      case "post-transition metal":
+        className += "element-post-transition-metal";
+        break;
+
+      case "lanthanide":
+        className += "element-lanthanide";
+        break;
+
+      case "actinide":
+        className += "element-actinide";
+        break;
+
+      default:
+        className += "element-unknown";
+        break;
+    }
+
+    return className;
   };
 
   render() {
     return (
       <div className="table-element">
         {this.state.element === "" ? (
-          <div className="element-undefined">blank</div>
+          <div className={this.CategoryClass(this.state.element)}>
+            <span></span>
+          </div>
         ) : (
-          <div className={this.CategoryClass(this.state.element.category)}>
-            <a href={this.state.element.source} className="element-anchor" target="_about">
+          <div className={this.CategoryClass(this.state.element)}>
+            <a
+              href={this.state.element.source}
+              className="element-anchor"
+              target="_about"
+            >
               <span className="element-number">
                 {this.state.element.number}
               </span>

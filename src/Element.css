@@ -4,11 +4,14 @@
   width: 5.555%;
   justify-content: center;
   align-items: center;
+  padding: 3px 0 3px 0;
 }
-
+.element-inner-wrapper {
+  box-shadow: 1px 2px 10px;
+  overflow-x: hidden;
+}
 .element-unknown {
-  background-color: #ddd;
-  color: white;
+  background-color: rgb(233, 233, 233);
 }
 .element-diatomic-nonmetal {
   background-color: rgb(244, 254, 158);
@@ -20,7 +23,7 @@
   background-color: rgb(205, 205, 159);
 }
 .element-alkali-metal {
-  background-color: rgb(239,111,107);
+  background-color: rgb(239, 111, 107);
 }
 .element-alkaline-earth-metal {
   background-color: rgb(251, 224, 181);

@@ -17,7 +17,7 @@ class PeriodicTable extends React.Component {
   componentDidMount() {
     this.setState(() => {
       const table = [];
-      for (let i = 0; i < 126; ++i) {
+      for (let i = 0; i < 198; ++i) {
         table.push("");
       }
 
@@ -32,7 +32,15 @@ class PeriodicTable extends React.Component {
   }
 
   getElementIndex = (element) => {
-    let index = (element.ypos - 1) * 18 + (element.xpos - 1);
+
+    let index;
+    if (element.number >= 57 && element.number <= 71){
+      index = (element.ypos - 1) * 18 + (element.xpos - 1) + 18;
+    } else if (element.number >= 89 && element.number <= 103){
+        index = (element.ypos - 1) * 18 + (element.xpos - 1) + 18;
+      } else {
+        index = (element.ypos - 1) * 18 + (element.xpos - 1);
+    }
     return index;
   };
 

@@ -6,11 +6,40 @@
   align-items: center;
 }
 
-.element {
-  background-color: green;
+.element-unknown {
+  background-color: #ddd;
   color: white;
 }
-
+.element-diatomic-nonmetal {
+  background-color: rgb(244, 254, 158);
+}
+.element-polyatomic-nonmetal {
+  background-color: rgb(244, 254, 158);
+}
+.element-metalloid {
+  background-color: rgb(205, 205, 159);
+}
+.element-alkali-metal {
+  background-color: rgb(239,111,107);
+}
+.element-alkaline-earth-metal {
+  background-color: rgb(251, 224, 181);
+}
+.element-transition-metal {
+  background-color: rgb(247, 197, 195);
+}
+.element-post-transition-metal {
+  background-color: rgb(190, 181, 177);
+}
+.element-noble-gas {
+  background-color: lightblue;
+}
+.element-lanthanide {
+  background-color: rgb(246, 196, 251);
+}
+.element-actinide {
+  background-color: rgb(243, 160, 203);
+}
 .element-undefined {
   background-color: white;
   color: white;
@@ -41,4 +70,14 @@
   display: block;
   text-align: center;
   font-size: 6px;
+}
+a:link,
+a:visited {
+  text-decoration: none;
+}
+a:hover,
+a:active {
+  font-size: 1.1em;
+  color: red;
+  background-color: black;
 }

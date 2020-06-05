@@ -1,5 +1,4 @@
 import React from "react";
-import { render } from "react-dom";
 import "./Element.css";
 
 class Element extends React.Component {
@@ -10,14 +9,16 @@ class Element extends React.Component {
   constructor(props) {
     super(props);
     this.state.element = props.element;
-    // console.log(typeof props.element);
   }
   shells = (arr) => {
     return arr.join();
   };
 
-  CategoryClass = (element) => {
+  showDetail = () => {
+    this.props.onShowDetail(this.props.element);
+  };
 
+  CategoryClass = (element) => {
     if (element === "") {
       return "element-undefined";
     }
@@ -85,6 +86,10 @@ class Element extends React.Component {
               href={this.state.element.source}
               className="element-anchor"
               target="_about"
+              onClick={(e) => {
+                e.preventDefault();
+                this.showDetail();
+              }}
             >
               <span className="element-number">
                 {this.state.element.number}

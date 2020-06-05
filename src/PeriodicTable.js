@@ -1,18 +1,14 @@
 import React from "react";
-import { render } from "react-dom";
 import "./PeriodicTable.css";
 import Element from "./Element.js";
 import * as ElementData from "./PeriodicTableData";
+import ElementModal from "./ElementModal";
 
 class PeriodicTable extends React.Component {
   state = {
     table: [],
+    currentElement: false,
   };
-
-  constructor(props) {
-    super(props);
-    this.state = { table: [] };
-  }
 
   componentDidMount() {
     this.setState(() => {
@@ -22,7 +18,6 @@ class PeriodicTable extends React.Component {
       }
 
       const elements = ElementData.elements;
-      console.log(elements);
       for (let i = 0; i < elements.length; ++i) {
         table[this.getElementIndex(elements[i])] = elements[i];
       }
@@ -32,16 +27,19 @@ class PeriodicTable extends React.Component {
   }
 
   getElementIndex = (element) => {
-
     let index;
-    if (element.number >= 57 && element.number <= 71){
+    if (element.number >= 57 && element.number <= 71) {
       index = (element.ypos - 1) * 18 + (element.xpos - 1) + 18;
-    } else if (element.number >= 89 && element.number <= 103){
-        index = (element.ypos - 1) * 18 + (element.xpos - 1) + 18;
-      } else {
-        index = (element.ypos - 1) * 18 + (element.xpos - 1);
+    } else if (element.number >= 89 && element.number <= 103) {
+      index = (element.ypos - 1) * 18 + (element.xpos - 1) + 18;
+    } else {
+      index = (element.ypos - 1) * 18 + (element.xpos - 1);
     }
     return index;
+  };
+
+  onShowDetail = (element) => {
+    this.setState({ currentElement: element });
   };
 
   render() {
@@ -49,9 +47,16 @@ class PeriodicTable extends React.Component {
       <div className="Board-outer-wrapper">
         <div className="Board-inner-wrapper flex-container">
           {this.state.table.map((element, index) => {
-            return <Element key={index} element={element} />;
+            return (
+              <Element
+                key={index}
+                element={element}
+                onShowDetail={this.onShowDetail}
+              />
+            );
           })}
         </div>
+        <ElementModal element={this.state.currentElement} />
       </div>
     );
   }

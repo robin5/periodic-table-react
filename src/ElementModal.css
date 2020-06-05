@@ -1,0 +1,20 @@
+.element-modal-section {
+}
+.element-modal-anchor:hover {
+    background-color: inherit;
+}
+.element-modal-key {
+  display: inline-block;
+  font-weight: 600;
+  padding-left: 10px;
+  padding-bottom: 2px;
+}
+.element-modal-space-after-key {
+  display: inline-block;
+  width: 10px;
+}
+.element-modal-long-value {
+  width: 100%;
+    padding-left: 10px;
+    overflow-x: auto;
+}

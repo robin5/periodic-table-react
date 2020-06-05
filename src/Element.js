@@ -1,5 +1,6 @@
 import React from "react";
 import "./Element.css";
+import { formatShells } from "./Utils.js";
 
 class Element extends React.Component {
   state = {
@@ -104,9 +105,7 @@ class Element extends React.Component {
                   : this.state.element.atomic_mass.toFixed(3)}
               </span>
               <span className="element-shells">
-                {Array.isArray(this.state.element.shells)
-                  ? this.state.element.shells.join("-")
-                  : ""}
+                {formatShells(this.state.element.shells)}
               </span>
             </a>
           </div>

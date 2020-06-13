@@ -1,8 +1,6 @@
 .PeriodicTable-outer-wrapper {
-  border: 2px solid black;
 }
 .PeriodicTable-inner-wrapper {
-  border: 8px solid orange;
 }
 .flex-container {
   display: flex;

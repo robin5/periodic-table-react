@@ -1,118 +1,116 @@
-import React from "react";
-import "./Element.css";
-import { formatShells } from "./Utils.js";
+import React from 'react';
+import './Element.css';
+import { formatShells } from './Utils.js';
 
 class Element extends React.Component {
-  state = {
-    element: "",
-  };
+    state = {
+        element: '',
+    };
 
-  constructor(props) {
-    super(props);
-    this.state.element = props.element;
-  }
-  shells = (arr) => {
-    return arr.join();
-  };
-
-  showDetail = () => {
-    this.props.onShowDetail(this.props.element);
-  };
-
-  CategoryClass = (element) => {
-    if (element === "") {
-      return "element-undefined";
+    constructor(props) {
+        super(props);
+        this.state.element = props.element;
     }
+    shells = (arr) => {
+        return arr.join();
+    };
 
-    let className = "element-inner-wrapper ";
-    switch (element.category) {
-      case "diatomic nonmetal":
-        className += "element-diatomic-nonmetal";
-        break;
+    showDetail = () => {
+        this.props.onShowDetail(this.props.element);
+    };
 
-      case "polyatomic nonmetal":
-        className += "element-polyatomic-nonmetal";
-        break;
+    CategoryClass = (element) => {
+        if (element === '') {
+            return 'element-undefined';
+        }
 
-      case "metalloid":
-        className += "element-metalloid";
-        break;
+        let className = 'element-inner-wrapper ';
+        switch (element.category) {
+            case 'diatomic nonmetal':
+                className += 'element-diatomic-nonmetal';
+                break;
 
-      case "noble gas":
-        className += "element-noble-gas";
-        break;
+            case 'polyatomic nonmetal':
+                className += 'element-polyatomic-nonmetal';
+                break;
 
-      case "alkali metal":
-        className += "element-alkali-metal";
-        break;
+            case 'metalloid':
+                className += 'element-metalloid';
+                break;
 
-      case "alkaline earth metal":
-        className += "element-alkaline-earth-metal";
-        break;
+            case 'noble gas':
+                className += 'element-noble-gas';
+                break;
 
-      case "transition metal":
-        className += "element-transition-metal";
-        break;
+            case 'alkali metal':
+                className += 'element-alkali-metal';
+                break;
 
-      case "post-transition metal":
-        className += "element-post-transition-metal";
-        break;
+            case 'alkaline earth metal':
+                className += 'element-alkaline-earth-metal';
+                break;
 
-      case "lanthanide":
-        className += "element-lanthanide";
-        break;
+            case 'transition metal':
+                className += 'element-transition-metal';
+                break;
 
-      case "actinide":
-        className += "element-actinide";
-        break;
+            case 'post-transition metal':
+                className += 'element-post-transition-metal';
+                break;
 
-      default:
-        className += "element-unknown";
-        break;
+            case 'lanthanide':
+                className += 'element-lanthanide';
+                break;
+
+            case 'actinide':
+                className += 'element-actinide';
+                break;
+
+            default:
+                className += 'element-unknown';
+                break;
+        }
+
+        return className;
+    };
+
+    render() {
+        return (
+            <div className="table-element">
+                {this.state.element === '' ? (
+                    <div className={this.CategoryClass(this.state.element)}>
+                        <span></span>
+                    </div>
+                ) : (
+                    <div className={this.CategoryClass(this.state.element)}>
+                        <span className="element-number">{this.state.element.number}</span>
+                        <a
+                            title={this.state.element.name}
+                            aria-haspopup="true"
+                            href={this.state.element.source}
+                            className="element-anchor"
+                            target="_about"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                this.showDetail();
+                            }}
+                        >
+                            <span className="element-symbol">{this.state.element.symbol}</span>
+                        </a>
+                        <span className="element-name">{this.state.element.name}</span>
+                        <span className="element-atomic-mass">
+                            {typeof this.state.element.atomic_mass !== 'number'
+                                ? ''
+                                : this.state.element.atomic_mass.toFixed(3)}
+                        </span>
+                        <span className="element-shells">
+                            {formatShells(this.state.element.shells)}
+                        </span>
+                    </div>
+                )}
+            </div>
+        );
     }
-
-    return className;
-  };
-
-  render() {
-    return (
-      <div className="table-element">
-        {this.state.element === "" ? (
-          <div className={this.CategoryClass(this.state.element)}>
-            <span></span>
-          </div>
-        ) : (
-          <div className={this.CategoryClass(this.state.element)}>
-            <a
-              href={this.state.element.source}
-              className="element-anchor"
-              target="_about"
-              onClick={(e) => {
-                e.preventDefault();
-                this.showDetail();
-              }}
-            >
-              <span className="element-number">
-                {this.state.element.number}
-              </span>
-              <span className="element-symbol">
-                {this.state.element.symbol}
-              </span>
-              <span className="element-name">{this.state.element.name}</span>
-              <span className="element-atomic-mass">
-                {typeof this.state.element.atomic_mass !== "number"
-                  ? ""
-                  : this.state.element.atomic_mass.toFixed(3)}
-              </span>
-              <span className="element-shells">
-                {formatShells(this.state.element.shells)}
-              </span>
-            </a>
-          </div>
-        )}
-      </div>
-    );
-  }
 }
 
 export default Element;
